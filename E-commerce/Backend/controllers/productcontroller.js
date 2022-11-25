@@ -1,7 +1,7 @@
 const mssql = require('mssql')
 const dotenv = require('dotenv')
 const sqlConfig = require('../config/config')
-const {v4} = require('uuid')
+const {v4: uuidv4} = require('uuid')
 
 dotenv.config()
 
@@ -18,18 +18,16 @@ module.exports = {
                 price,
                 imageurl,
                 discount,
-                func
             } = req.body
 
             await pool.request()
-                .input('product_id', v4())
+                .input('product_id', uuidv4())
                 .input('name', name)
                 .input('description', description)
                 .input('price', price)
                 .input('imageurl', imageurl)
                 .input('discount', discount)
-                .input('function', func)
-                .execute('add_Update_product',)
+                .execute('addUpdateProduct')
 
             res.status(200).json({
                 status: 'success'

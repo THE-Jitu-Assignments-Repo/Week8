@@ -1,23 +1,22 @@
-CREATE OR ALTER PROC add_Update_product(@productID INT=null, @name VARCHAR(255), @description VARCHAR(255),@price INT, @imageurl VARCHAR(255), @discount int, @function VARCHAR(255))
+CREATE OR ALTER PROCEDURE addUpdateProduct(
+		@productID AS VARCHAR(255), 
+		@name AS VARCHAR(255),
+		@description AS VARCHAR(255),
+		@price AS INT,
+		@imageurl AS VARCHAR(255),
+		@discount AS int)
 AS
 BEGIN
+IF EXISTS(select * from dbo.products where product_id = @productID)
+--BEGIN
+	update dbo.products
+	set name=@name, description=@description,  imageurl=@imageurl, price=@price, discount_rate=@discount;
+--END
+ELSE
+--BEGIN
 
-IF @function = 'insert'
-BEGIN
-	insert into products(name,description,price,imageurl,discount_rate) 
-	values(@name, @description,@price, @imageurl,@discount)
+	insert into [dbo].[products](product_id,name,description,price,imageurl,discount_rate) 
+	values(@productID,@name, @description,@price, @imageurl,@discount)
+--END
 END
 
-ELSE IF @function = 'update'
-BEGIN
-	update products
-	set name=@name, description=@description,  imageurl=@imageurl, price=@price, discount_rate=@discount
-	where product_id= @productID;
-END
-
-END
-
--- testing
-
-
-EXECUTE add_Update_product '', 'cloths', 'for men and womens', 250, 'http://gjjsk.com', 20, 'insert'; 
