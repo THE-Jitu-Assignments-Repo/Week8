@@ -8,15 +8,15 @@ CREATE OR ALTER PROCEDURE addUpdateProduct(
 AS
 BEGIN
 IF EXISTS(select * from dbo.products where product_id = @productID)
---BEGIN
 	update dbo.products
 	set name=@name, description=@description,  imageurl=@imageurl, price=@price, discount_rate=@discount where product_id=@productID;
---END
 ELSE
---BEGIN
-
 	insert into [dbo].[products](product_id,name,description,price,imageurl,discount_rate) 
 	values(@productID,@name, @description,@price, @imageurl,@discount)
---END
 END
+
+
+
+
+EXECUTE addUpdateProduct '743de51b-2ffc-426a-bcb1-9af5a0c89bf1','john', 'for men and womens', 200, 'https://jfnjsd.com', 60; 
 

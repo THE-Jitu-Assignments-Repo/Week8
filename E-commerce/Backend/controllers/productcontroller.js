@@ -21,7 +21,7 @@ module.exports = {
                 description,
                 price,
                 imageurl,
-                discount,
+                discount
             } = req.body
 
             await pool.request()
@@ -50,7 +50,7 @@ module.exports = {
             const {
                 id
             } = req.params
-            console.log(id);
+            // console.log(id);
             const {
                 name,
                 description,
@@ -69,7 +69,7 @@ module.exports = {
                 .execute('addUpdateProduct')
 
             //  await  pool.request().execute('addUpdateProduct', {id, name, description, price, imageurl, discount})
-            
+
             res.status(200).json({
                 message: 'Product updated successfully'
             })
@@ -84,7 +84,7 @@ module.exports = {
         try {
             const pool = await mssql.connect(sqlConfig)
             const allproducts = await (await pool.request().execute('getproducts')).recordset;
-            res.status(200).json(allproducts)
+            res.status(200).json({Products: allproducts})
 
         } catch (error) {
 
@@ -96,8 +96,16 @@ module.exports = {
     getSingleproduct: async (req, res) => {
         try {
 
-        } catch (error) {
+            const {id} = req.params
+            // console.log(id);
 
+            const pool = await mssql.connect(sqlConfig)
+
+            const singleProduct = await (await pool.request().input("id", id).execute('getSingleProduct')).recordset;
+            res.status(200).json({Product: singleProduct})
+
+        } catch (error) {
+            res.status(500).json({message: error.message})
         }
     },
     deleteproduct: async (req, res) => {
