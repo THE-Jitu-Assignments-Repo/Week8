@@ -1,4 +1,4 @@
-const { addtocart } = require('../controllers/cartControllers')
+const { addtocart, getAllCart } = require('../controllers/cartControllers')
 const { addproducts, getproducts, updateproduct, getSingleproduct } = require('../controllers/productcontroller')
 
 const router = require('express').Router()
@@ -13,6 +13,7 @@ router.get('/',getproducts)
 
 // cart routes
 router.post('/addtocart/:id', addtocart)
+router.get('/cart/getallcart', getAllCart)
 
 
 

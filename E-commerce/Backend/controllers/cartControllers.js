@@ -8,7 +8,7 @@ module.exports={
         try {
             const pool = await mssql.connect(sqlConfig)
             const {id} = req.params
-            console.log(id)
+            // console.log(id)
             await pool.request().input('id', id).execute('addOrRemoveToCart')
 
             res.status(200).json("Added to cart successfully")
@@ -19,9 +19,12 @@ module.exports={
     },
     getAllCart: async (req, res) => {
         try {
-            
+            const pool = await mssql.connect(sqlConfig)
+
+            const cart = await pool.request().execute('getAllCart')
+            res.status(200).json(cart)
         } catch (error) {
-            
+            res.status(500).json({message: error.message})
         }
     },
     removeSingleItem: async(req,res) => {
