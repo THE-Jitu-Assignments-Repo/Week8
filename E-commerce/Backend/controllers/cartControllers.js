@@ -65,8 +65,13 @@ module.exports={
     },
     clearCart: async (req, res) => {
         try {
-            
+            const pool = await mssql.connect(sqlConfig)
+
+            await pool.request().execute('clearCart')
+            res.status(200).json("Cleared cart")
+
         } catch (error) {
+            res.status(500).json({message: error.message})
             
         }
     }

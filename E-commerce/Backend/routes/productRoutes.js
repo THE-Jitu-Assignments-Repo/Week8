@@ -1,4 +1,4 @@
-const { addtocart, getAllCart, removeSingleItem } = require('../controllers/cartControllers')
+const { addtocart, getAllCart, removeSingleItem, incQuantity, decQuantity, clearCart } = require('../controllers/cartControllers')
 const { addproducts, getproducts, updateproduct, getSingleproduct } = require('../controllers/productcontroller')
 
 const router = require('express').Router()
@@ -15,8 +15,8 @@ router.get('/',getproducts)
 router.post('/addtocart/:id', addtocart)
 router.get('/cart/getallcart', getAllCart)
 router.post('/cart/removeSingleItem/:id', removeSingleItem)
-
-
-
+router.post('/cart/addquantity/:id', incQuantity)
+router.post('/cart/reducequantity/:id', decQuantity) 
+router.get('/cart/clearCart', clearCart)
 
 module.exports = router
