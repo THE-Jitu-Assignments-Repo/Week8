@@ -1,3 +1,6 @@
+use E_Commerce
+go
+
 CREATE PROC getproducts
 AS
 BEGIN

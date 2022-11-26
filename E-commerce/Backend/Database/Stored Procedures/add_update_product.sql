@@ -10,7 +10,7 @@ BEGIN
 IF EXISTS(select * from dbo.products where product_id = @productID)
 --BEGIN
 	update dbo.products
-	set name=@name, description=@description,  imageurl=@imageurl, price=@price, discount_rate=@discount;
+	set name=@name, description=@description,  imageurl=@imageurl, price=@price, discount_rate=@discount where product_id=@productID;
 --END
 ELSE
 --BEGIN

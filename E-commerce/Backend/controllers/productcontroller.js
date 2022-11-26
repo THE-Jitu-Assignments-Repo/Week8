@@ -1,7 +1,9 @@
 const mssql = require('mssql')
 const dotenv = require('dotenv')
 const sqlConfig = require('../config/config')
-const {v4: uuidv4} = require('uuid')
+const {
+    v4: uuidv4
+} = require('uuid')
 
 dotenv.config()
 
@@ -10,6 +12,8 @@ module.exports = {
 
 
     addproducts: async (req, res) => {
+        const myId = uuidv4();
+        console.log(myId);
         try {
             const pool = await mssql.connect(sqlConfig)
             const {
@@ -21,7 +25,7 @@ module.exports = {
             } = req.body
 
             await pool.request()
-                .input('product_id', uuidv4())
+                .input('productID', myId)
                 .input('name', name)
                 .input('description', description)
                 .input('price', price)
@@ -41,6 +45,41 @@ module.exports = {
         }
     },
 
+    updateproduct: async (req, res) => {
+        try {
+            const {
+                id
+            } = req.params
+            console.log(id);
+            const {
+                name,
+                description,
+                price,
+                imageurl,
+                discount
+            } = req.body
+            const pool = await mssql.connect(sqlConfig)
+            await pool.request()
+                .input('productID', id)
+                .input('name', name)
+                .input('description', description)
+                .input('price', price)
+                .input('imageurl', imageurl)
+                .input('discount', discount)
+                .execute('addUpdateProduct')
+
+            //  await  pool.request().execute('addUpdateProduct', {id, name, description, price, imageurl, discount})
+            
+            res.status(200).json({
+                message: 'Product updated successfully'
+            })
+
+        } catch (error) {
+            res.status(500).json({
+                message: error.message
+            })
+        }
+    },
     getproducts: async (req, res) => {
         try {
             const pool = await mssql.connect(sqlConfig)
@@ -55,13 +94,6 @@ module.exports = {
         }
     },
     getSingleproduct: async (req, res) => {
-        try {
-
-        } catch (error) {
-
-        }
-    },
-    updateproduct: async (req, res) => {
         try {
 
         } catch (error) {
