@@ -1,6 +1,6 @@
 const mssql = require('mssql')
 const dotenv = require('dotenv')
-const sqlConfig = require('../config/config')
+const sqlConfig = require('../../config/config')
 const {
     v4: uuidv4
 } = require('uuid')

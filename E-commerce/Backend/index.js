@@ -1,7 +1,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const sqlconfig = require('./config/config');
-const  router  = require('./routes/productRoutes');
+const  productRoutes  = require('./routes/product/productRoutes');
+const cartRoutes = require('./routes/cart/cartRoutes'); 
+const userRoutes = require('./routes/user/userRoutes');
 
 dotenv.config()
 
@@ -14,7 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.get('/', (req, res) => { res.send('hellp')})
 
 
-app.use('/', router)
+app.use('/', productRoutes)
+app.use('/cart', cartRoutes)
+app.use('/user', userRoutes)
 
 
 app.listen(process.env.PORT, ()=>{

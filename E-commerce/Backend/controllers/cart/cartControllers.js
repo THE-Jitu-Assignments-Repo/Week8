@@ -1,4 +1,4 @@
-const sqlConfig = require('../config/config')
+const sqlConfig = require('../../config/config')
 const mssql = require('mssql')
 const dotenv = require('dotenv');
 
