@@ -7,7 +7,6 @@ import {
 
 const initialState = {
     cart: [],
-    totalQuantity: 0,
     totalPrice: 0
 }
 
@@ -15,17 +14,50 @@ const initialState = {
 
 export const getCart = createAsyncThunk(
     'cart/getCart',
-    async (_, thunkAPI) => {
+    async () => {
 
         try {
             
-            const response = await axios.get('http://localhost:5001/cart/getCart')
+            const response = await axios.get('http://localhost:5001/cart')
             console.log("cart",response.data);
             return response.data
         } catch (error) {
-            
+            console.log("cart error",error);
         }
     })
+
+
+export const incQuantity = createAsyncThunk(
+    'cart/incQuantity',
+    async (id, {dispatch}) =>{
+        try {
+            const response = await axios.post(`http://localhost:5001/cart/addquantity/${id}`)
+            dispatch(getCart())
+            return response.data
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+)
+
+export const decQuantity = createAsyncThunk(
+    'cart/decQuantity',
+    async (id, {dispatch}) =>{
+        try {
+            const response = await axios.post(`http://localhost:5001/cart/reducequantity/${id}`)
+            dispatch(getCart())
+            return response.data
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+)
 
 
 export const cartSlice = createSlice({
@@ -33,9 +65,19 @@ export const cartSlice = createSlice({
     initialState,
     extraReducers(builder){
         builder.addCase(getCart.fulfilled,(state,action)=>{
-            state.cart = action.payload
-        })
-    }
+            state.cart= action.payload
+        }),
+        builder.addCase(getCart.rejected,(state,action)=>{
+            console.log(action.payload);
+    }),
+     builder.addCase(incQuantity.fulfilled,(state,action)=>{
+        console.log(action.payload);
+     }),
+      builder.addCase(decQuantity.fulfilled,(state,action)=>{
+        console.log(action.payload);
+     })
+
+}
 })
 
 export default cartSlice.reducer

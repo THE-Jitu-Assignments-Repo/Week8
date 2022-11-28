@@ -6,7 +6,7 @@ const router = require('express').Router()
 
 // cart routes
 router.get('/', getAllCart)
-router.post('/addtocart/:id', addtocart)
+router.put('/addtocart/:id', addtocart)
 router.post('/removeSingleItem/:id', removeSingleItem)
 router.post('/addquantity/:id', incQuantity)
 router.post('/reducequantity/:id', decQuantity) 

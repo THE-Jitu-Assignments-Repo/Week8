@@ -1,36 +1,33 @@
 import React, { useEffect} from "react";
-import {  useDispatch, useSelector } from "react-redux";
-// import { deleteItem, getcart} from "../../features/cart";
-// import Cartcard from "./Cards/Cartcard";
+import {  useDispatch, useSelector } from "react-redux";  
+import { getCart } from "../../features/cart/cartSlice";
+import Cartcard from "../Cards/cartCard/Cartcard";
 import "./cart.css"
 
 function Cart() {
   const dispatch = useDispatch()
-  const { cart } = useSelector((state) => state.product);
+  const { cart } = useSelector((state) => state.cart);
 
+  console.log("caaartt",cart?.cartItems);
 
-  const handleRemove = () => {
-    cart?.map(item => dispatch(deleteItem(item.cartId)))
-  }
-
-  const totalCart = cart?.reduce((total,item)=> total + Number(item.totalPrice),0)
+  // const totalCart = cart?.reduce((total,item)=> total + Number(item.totalPrice),0)
 
     useEffect(() => {
-    dispatch(getcart());
+    dispatch(getCart());
   }, []);
 
   return (
     <div className="cart--content">
       <div className="cart--content--header">
         <span className="cart--head--tag">E-Market Cart</span>
-        <span className="remove--all" onClick={handleRemove}>CLEAR CART</span>
+        <span className="remove--all">CLEAR CART</span>
       </div>
-      {cart?.map((item) => (
+      {cart?.cartItems?.map((item) => (
         <Cartcard item={item} />
       ))}
       <div className="total--session">
       <hr/>
-      <span>Total: Ksh. {totalCart}</span>
+      <span>Total: Ksh. </span>
 
       </div>
 
