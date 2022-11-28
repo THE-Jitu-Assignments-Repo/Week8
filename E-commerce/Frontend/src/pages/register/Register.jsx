@@ -21,6 +21,7 @@ function Register() {
       return alert('Please enter a full name');
     }
     dispatch(registerUser({username: name, email, password}))
+    navigate('/login')
   };
 
   return (
