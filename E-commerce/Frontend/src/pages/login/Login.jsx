@@ -14,6 +14,7 @@ function Login() {
 
   const loginToApp = (e) => {
     e.preventDefault();
+
     dispatch(loginUser({email,password}))
     navigate('/')
   };

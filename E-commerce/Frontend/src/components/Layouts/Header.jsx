@@ -16,6 +16,9 @@ function Header() {
 
   const token = localStorage.getItem('token');
 
+  const logoutOfApp = () => {
+    localStorage.removeItem('token');
+  }
 
 
   return (
@@ -39,7 +42,7 @@ function Header() {
                 <ul>
 
                     <li className="css-button--arrow--black"><FaUser />Profile</li>
-                    {/* <li className="css-button--arrow--black" onClick={logoutOfApp}><FaUserLock /> Logout</li> */}
+                    <li className="css-button--arrow--black" onClick={logoutOfApp}><FaUserLock /> Logout</li>
                 </ul>
                     </div>
               </div>

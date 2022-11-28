@@ -1,5 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {
+    createAsyncThunk,
+    createSlice
+} from "@reduxjs/toolkit";
 import axios from "axios";
+import {
+    toast
+} from "react-toastify";
 
 
 const url = 'http://localhost:5001/user/login'
@@ -8,54 +14,67 @@ const url = 'http://localhost:5001/user/login'
 
 export const loginUser = createAsyncThunk(
     "user/loginUser",
-    async ({ email, password }) => {
+    async ({
+        email,
+        password
+    }) => {
 
-        const response = await axios.post(url, {
-            email,
-            password
-        });
+        try {
+            const response = await axios.post(url, {
+                email,
+                password
+            });
 
-        console.log(response);
-        localStorage.setItem("token", response.data.token);
-        return response.data;
+            console.log(response.data);
+            localStorage.setItem("token", response.data.token);
+            return response.data;
+            
+        } catch (error) {
+
+            toast.error(error.response.data.message);
+
+        }
     }
-    
+
 )
 export const registerUser = createAsyncThunk(
     'user/register',
-    async(userDetails)=>{
+    async (userDetails) => {
 
         const response = await axios.post('http://localhost:5001/user/register', userDetails)
         console.log(response);
+        toast.success(response.data)
         return response.data
     }
 )
 
 export const userSlice = createSlice({
     name: 'user',
-    initialState:{
+    initialState: {
         token: ''
     },
-    reducers:{
+    reducers: {
 
-        logout:(state)=>{
+        logout: (state) => {
             state.user = null
         }
     },
-    extraReducers: (builder) =>{
+    extraReducers: (builder) => {
         builder.addCase(registerUser.fulfilled, (state, action) => {
-            console.log(action.payload);
-        }),
-        builder.addCase(loginUser.fulfilled, (state, action) => {
-            state.token = action.payload
-            console.log(state.token)
+                console.log(action.payload);
+            }),
+            builder.addCase(loginUser.fulfilled, (state, action) => {
+                state.token = action.payload
+                console.log(state.token)
 
-        })
+            })
 
     }
 });
 
-export const { logout} = userSlice.actions;
+export const {
+    logout
+} = userSlice.actions;
 
 // state selector
 
