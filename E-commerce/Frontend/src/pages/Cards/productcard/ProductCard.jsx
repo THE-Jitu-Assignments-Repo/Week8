@@ -1,45 +1,21 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { addtocart, getcart } from "../../../features/cart";
 
 import "./productcard.css"
 
-function ProductCard({data,id}) {
-    // console.log('itemId', id);
-    const {cart} = useSelector(state=>state.product)
-    const dispatch = useDispatch()
-    // console.log(data.id);
-    const handleCart =async (data)=>{
-        // let cart = await dispatch(getcart());
-        // console.log(cart.payload);
-        console.log("data test",data);
-        // console.log(cart.payload.some(cartItem => cartItem.id === data.id))
-        if (cart?.some(cartItem => cartItem.id === id)) {
-            console.log('working');
-            return
-            // dispatch(addtocart(data));
-        }
-        dispatch(addtocart(data))
-        // if(!cart?.some(cartItem => cartItem.id == id)){            
-        //     // dispatch(AddCart(data))
-        //     // console.log("skdc 1111",data);
-        //     dispatch(addtocart(data))
-        // }else{
-        //     console.log(data.Quantity);
-        // }
+function ProductCard({data, product_id}) {
             
-    }
+    
  
   return (
-    <div className="product--card" key={id}>
+    <div className="product--card" key={product_id}>
       <div className="product--card__top">
           <div className="product--rate">-{data?.discount}%</div>
-        <img src={data?.image} alt="product--img" className="image--product"/>
+        <img src={data?.imageurl} alt="product--img" className="image--product"/>
       </div>
       <div className="product--card__bottom">
         <div className="product--card__header">
-          <div className="title--card">{data?.title}</div>
+          <div className="title--card">{data?.name}</div>
         </div>
         {/* <div className="product--description">{data.description}</div> */}
         <div className="product--card__header">

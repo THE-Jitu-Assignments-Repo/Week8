@@ -18,6 +18,7 @@ function Header() {
 
   const logoutOfApp = () => {
     localStorage.removeItem('token');
+    window.location.reload()
   }
 
 

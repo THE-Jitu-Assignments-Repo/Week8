@@ -60,7 +60,7 @@ module.exports = {
                     const {password, id, ...others} = user;
                     const token = jwt.sign(others, 'secret',{expiresIn: '30mins'}) // my powers
                     // console.log(token);
-                    res.status(200).json({token});
+                    res.status(200).json({token, message: "login successfully"});
                 } else {
 
                     res.status(403).json({
@@ -68,7 +68,7 @@ module.exports = {
                     })
                 }
             } else {
-                res.status(404).json("user not found")
+                res.status(404).json({message:"user not found"})
             }
         } catch (error) {
             res.status(500).json({

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../features/auth/userSlice';
 import './login.css'
 
 function Login() {
+
+  const {error} = useSelector(state=> state.user);
   const navigate = useNavigate();
 // use state constants for the the form inputs
   const [email, setEmail] = useState('');
@@ -14,9 +16,19 @@ function Login() {
 
   const loginToApp = (e) => {
     e.preventDefault();
+     
+      dispatch(loginUser({email,password}))
+        // window.location.reload();
+      console.log(error);
 
-    dispatch(loginUser({email,password}))
-    navigate('/')
+      if(error){
+        navigate('/login')
+      }else{
+        navigate('/')
+        // window.location.reload();
+      }
+   
+
   };
 
 

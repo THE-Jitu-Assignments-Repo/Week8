@@ -25,8 +25,9 @@ export const loginUser = createAsyncThunk(
                 password
             });
 
-            console.log(response.data);
+            // console.log(response.data);
             localStorage.setItem("token", response.data.token);
+            toast.success(response.data.message);
             return response.data;
             
         } catch (error) {
@@ -51,7 +52,8 @@ export const registerUser = createAsyncThunk(
 export const userSlice = createSlice({
     name: 'user',
     initialState: {
-        token: ''
+        token: '',
+        error: false
     },
     reducers: {
 
@@ -65,8 +67,12 @@ export const userSlice = createSlice({
             }),
             builder.addCase(loginUser.fulfilled, (state, action) => {
                 state.token = action.payload
-                console.log(state.token)
+                // console.log(state.token)
 
+            }),
+            builder.addCase(loginUser.rejected, (state, action) => {
+                // state.error = action.error.response.data.message
+                state.error = true
             })
 
     }

@@ -4,14 +4,9 @@ import {
     createSlice,
     createAsyncThunk
 } from "@reduxjs/toolkit";
-import { async } from '@firebase/util';
-import { useParams } from 'react-router-dom';
 import { validateProductSchema } from '../../Helpers/Validation';
 import { toast } from "react-toastify"
 
-
-// const url = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/store.json"
-// const url2 = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json"
 
 const initialState = {
     product: [],
@@ -46,23 +41,11 @@ export const getProduct = createAsyncThunk(
         
         try {
             
-            const response = await axios.get(url)
+            const response = await axios.get('http://localhost:5001')
             let fetched = response.data
-            let myData = []
-            for (let key in fetched) {
-                myData.push({
-                    id: key,
-                    title: fetched[key].title,
-                    description: fetched[key].description,
-                    image: fetched[key].image,
-                    price: fetched[key].price,
-                    discount: fetched[key].discount,
-                    Quantity: fetched[key].Quantity,
-                    totalPrice: fetched[key].totalPrice
-                })
-            }
-            console.log(myData);
-            return myData
+            console.log(fetched);
+           return fetched
+        
             
         } catch (err) {
             console.log(err)

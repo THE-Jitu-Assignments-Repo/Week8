@@ -84,7 +84,7 @@ module.exports = {
         try {
             const pool = await mssql.connect(sqlConfig)
             const allproducts = await (await pool.request().execute('getproducts')).recordset;
-            res.status(200).json({Products: allproducts})
+            res.status(200).json({allproducts})
 
         } catch (error) {
 

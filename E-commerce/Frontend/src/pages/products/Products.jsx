@@ -5,12 +5,13 @@ import React, { useEffect, useState } from "react";
 import Addproduct from "../modal/Addproduct";
 import { FaList } from "react-icons/fa";
 import "./products.css";
-// import ProductCard from "./Cards/ProductCard";
+import ProductCard from "../Cards/productcard/ProductCard";
 
 function Products() {
   const [isopen, setIsOpen] = useState(false);
 
   const { product } = useSelector((state) => state.product);
+  console.log("my",product.allproducts);
   
 
   const dispatch = useDispatch();
@@ -96,8 +97,8 @@ function Products() {
           </div>
         </div>
         <div className="content--content">
-          {product?.map((data) => (
-             <ProductCard id={data?.id} data={data} />
+          {product.allproducts?.map((data) => (
+             <ProductCard data={data} product_id={data?.product_id}/>
           ))}
         </div>
       </div>
