@@ -10,8 +10,6 @@ import { toast } from "react-toastify"
 
 const initialState = {
     product: [],
-    cart: [],
-    totalQuantity: 0,
     showCart: false
 }
 
