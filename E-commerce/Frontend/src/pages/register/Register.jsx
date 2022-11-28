@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RegisterUser } from '../../features/auth';
+import { registerUser } from '../../features/auth/userSlice';
 
-import "./login.css"
+import "../login/login.css"
 
 
 function Register() {
@@ -20,33 +20,7 @@ function Register() {
     if (!name) {
       return alert('Please enter a full name');
     }
-
-    // Create a new user with Firebase
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userAuth) => {
-      // Update the newly created user with a display name and a picture
-        updateProfile(userAuth.user, {
-          displayName: name,
-          photoURL: profilePic,
-        })
-          .then(
-            // Dispatch the user information for persistence in the redux state
-            dispatch(
-              RegisterUser({
-                email: userAuth.user.email,
-                uid: userAuth.user.uid,
-                displayName: name,
-                photoUrl: profilePic,
-              })
-            )
-          )
-          .catch((error) => {
-            console.log('user not updated', error);
-          });
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    dispatch(registerUser({username: name, email, password}))
   };
 
   return (

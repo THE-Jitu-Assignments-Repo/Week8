@@ -10,8 +10,8 @@ import { validateProductSchema } from '../../Helpers/Validation';
 import { toast } from "react-toastify"
 
 
-const url = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/store.json"
-const url2 = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json"
+// const url = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/store.json"
+// const url2 = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json"
 
 const initialState = {
     product: [],

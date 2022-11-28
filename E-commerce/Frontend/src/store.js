@@ -8,7 +8,8 @@ import productsReducer from './features/products/productSlice'
 const RootReducer = combineReducers({
 
   user: userReducer,
-  product: productsReducer
+  product: productsReducer,
+  // cart: cartReducer
 })
 
 export default configureStore({

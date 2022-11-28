@@ -1,11 +1,11 @@
-import { getProduct } from "../../features/products";
+import { getProduct } from "../../features/products/productSlice";
 import { BsGrid3X3GapFill, BsStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 import Addproduct from "../modal/Addproduct";
 import { FaList } from "react-icons/fa";
 import "./products.css";
-import ProductCard from "./Cards/ProductCard";
+// import ProductCard from "./Cards/ProductCard";
 
 function Products() {
   const [isopen, setIsOpen] = useState(false);

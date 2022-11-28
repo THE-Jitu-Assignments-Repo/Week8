@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { auth, onAuthStateChanged } from "../../config/firebase";
-import { logout, selectUser, login } from "../../features/auth/userSlice";
+import { logout, selectUser, loginUser } from "../../features/auth/userSlice";
 import { Link, useNavigate } from "react-router-dom";
 import {FaCaretDown, FaEnvelope, FaInfo, FaInfoCircle, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
 import {BsFillBasket3Fill} from 'react-icons/bs'
@@ -10,35 +9,6 @@ import "./Layout.css";
 
 function Header() {
     const navigate = useNavigate();
-
-    // check at page load if a user is authenticated
-  useEffect(() => {
-    onAuthStateChanged(auth, (userAuth) => {
-      if (userAuth) {
-        // user is logged in, send the user's details to redux, store the current user in the state
-        dispatch(
-          login({
-            email: userAuth.email,
-            uid: userAuth.uid,
-            displayName: userAuth.displayName,
-            photoUrl: userAuth.photoURL,
-          })
-        );
-      } else {
-        dispatch(logout());
-      }
-    });
-  }, []);
-
-  const dispatch = useDispatch();
-
-  const logoutOfApp = () => {
-    // dispatch to the store with the logout action
-    dispatch(logout());
-    // sign out function from firebase
-    auth.signOut();
-    navigate('/login')
-  };
 
   const user = useSelector(selectUser);
 
