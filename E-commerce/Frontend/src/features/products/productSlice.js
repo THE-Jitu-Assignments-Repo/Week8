@@ -18,10 +18,11 @@ const initialState = {
 export const postProduct = createAsyncThunk(
     "products/postProducts",
     async (product, thunkApi) => {
+        console.log(product);
         try{
 
             await validateProductSchema(product)
-            const response = await axios.post(url, product)
+            const response = await axios.post('http://localhost:5001/addproduct', product)
     
             thunkApi.dispatch(getProduct()) // mike note this very key "wisdom"
             toast.success("Successfully Added product")
@@ -43,7 +44,7 @@ export const getProduct = createAsyncThunk(
             
             const response = await axios.get('http://localhost:5001')
             let fetched = response.data
-            console.log(fetched);
+            // console.log(fetched);
            return fetched
         
             

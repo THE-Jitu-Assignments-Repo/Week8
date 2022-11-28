@@ -8,11 +8,10 @@ import "./modal.css";
 function Addproduct({ setIsOpen }) {
   const dispatch = useDispatch();
   const [newproduct, setNewProduct] = useState({
-    title: "",
-    category: "",
+    name: "",
     description: "",
-    image: "",
     price: "",
+    imageurl: "",
     discount: "",
   });
 
@@ -25,8 +24,7 @@ function Addproduct({ setIsOpen }) {
     
     const handleSubmit = (e) => {
         e.preventDefault();       
-    const Quantity = 1;
-    dispatch(postProduct({ ...newproduct, Quantity, totalPrice: newproduct.price * Quantity }));
+    dispatch(postProduct(newproduct));
     dispatch(getProduct());
     setIsOpen();
   };
@@ -46,26 +44,26 @@ function Addproduct({ setIsOpen }) {
           <form className="form">
             <input
               type="url"
-              name="image"
+              name="imageurl"
               placeholder="Product Image Url"
-              value={newproduct.image}
+              value={newproduct.imageurl}
               onChange={handleChange}
               autoFocus
             />
             <input
               type="text"
-              name="title"
+              name="name"
               placeholder="Enter the name of the product"
-              value={newproduct.title}
+              value={newproduct.name}
               onChange={handleChange}
             />
-            <input
+            {/* <input
               type="text"
               name="category"
               value={newproduct.category}
               placeholder="Product Category"
               onChange={handleChange}
-            />
+            /> */}
             <input
               type="text"
               name="description"
