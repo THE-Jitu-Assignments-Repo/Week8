@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch} from 'react-redux'
-import { addQuantity, deleteItem, patchQuantity, reduceQuantity} from '../../features/products/productSlice'
+import { addQuantity, deleteItem, patchQuantity, reduceQuantity} from '../../../features/products'
 import "./CartCard.css"
 
 

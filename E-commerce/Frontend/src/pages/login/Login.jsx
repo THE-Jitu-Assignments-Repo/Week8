@@ -4,9 +4,9 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
-} from '../config/firebase';
+} from '../../config/firebase';
 import { useDispatch } from 'react-redux';
-import { login } from '../features/auth/userSlice';
+import { login } from '../../features/auth/';
 import { Link, useNavigate } from 'react-router-dom';
 import './login.css'
 

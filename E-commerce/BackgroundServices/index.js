@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const sqlConfig = require('./config/config')
 const cronJob = require('node-cron');
+const cors = require('cors')
 const { welcomeEmailService } = require('./Service/welcomeUser');
 
 dotenv.config()
@@ -9,6 +10,8 @@ dotenv.config()
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 const start = () =>{
  cronJob.schedule('*/10 * * * * * ', async() => {

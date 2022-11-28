@@ -1,8 +1,8 @@
-import { getProduct } from "../features/products/productSlice";
+import { getProduct } from "../../features/products";
 import { BsGrid3X3GapFill, BsStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
-import Addproduct from "./modal/Addproduct";
+import Addproduct from "../modal/Addproduct";
 import { FaList } from "react-icons/fa";
 import "./products.css";
 import ProductCard from "./Cards/ProductCard";

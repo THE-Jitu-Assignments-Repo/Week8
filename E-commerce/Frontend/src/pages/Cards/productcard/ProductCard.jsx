@@ -1,7 +1,7 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addtocart, getcart } from "../../features/products/productSlice";
+import { addtocart, getcart } from "../../../features/cart";
 
 import "./productcard.css"
 

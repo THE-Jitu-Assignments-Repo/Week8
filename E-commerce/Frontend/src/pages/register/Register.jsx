@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { RegisterUser } from '../features/auth/userSlice';
+import { RegisterUser } from '../../features/auth';
 
 import "./login.css"
 

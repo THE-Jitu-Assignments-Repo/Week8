@@ -1,13 +1,13 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Home from "../pages/Home";
-import Products from "../pages/Products";
-import Contact from "../pages/Contact";
-import About from "../pages/About";
-import Cart from "../pages/Cart";
+import Home from "../pages/Home/Home";
+import Products from "../pages/products/Products";
+import Contact from "../pages/contacts/Contact";
+import About from "../pages/about/About";
+import Cart from "../pages/cart/Cart";
 import Layout from "../components/Layouts/Layout";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Notfound from "../pages/Notfound";
+import Login from "../pages/login/Login";
+import Register from "../pages/register/Register";
+import Notfound from "../pages/notfound/Notfound";
 
 
 const Routers = () => {

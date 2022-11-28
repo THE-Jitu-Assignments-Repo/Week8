@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import {  useDispatch, useSelector } from "react-redux";
-import { deleteItem, getcart} from "../features/products/productSlice";
+import { deleteItem, getcart} from "../../features/cart";
 import Cartcard from "./Cards/Cartcard";
 import "./cart.css"
 
