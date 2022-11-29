@@ -17,7 +17,7 @@ function Contact() {
             </div>
             <div className="contact-links">
               <span>WE WOULD LOVE TO HEAR FROM YOU</span>
-              <p>Wheather you are curious about a new feature or a new product it the market...</p>
+              <p>Wheather you are curious about a new feature or a new product in the E-market...</p>
             </div>
             <div className="contact-to">
               <div className="sales">
