@@ -10,7 +10,7 @@ function Cart() {
 
   console.log("caaartt",cart?.cartItems);
 
-  const totalCart = cart?.cartItems?.reduce((total,item)=> total + Number(item.price),0)
+  const totalCart = cart?.cartItems?.reduce((total,item)=> total + Number(item.price * item.quantity),0)
 
     useEffect(() => {
     dispatch(getCart());
