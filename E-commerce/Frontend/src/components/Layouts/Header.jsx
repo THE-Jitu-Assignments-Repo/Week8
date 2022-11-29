@@ -1,9 +1,10 @@
 // import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, selectUser, loginUser } from "../../features/auth/userSlice";
+import { useSelector } from "react-redux";
+import {  selectUser } from "../../features/auth/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import {FaCaretDown, FaEnvelope, FaInfo, FaInfoCircle, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
+import {FaEnvelope, FaInfoCircle, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
 import {BsFillBasket3Fill} from 'react-icons/bs'
+import jwt_decode from 'jwt-decode'
 import "./Layout.css";
 
 
@@ -16,12 +17,17 @@ function Header() {
   // console.log(cart?.cartItems);
 
   const token = localStorage.getItem('token');
+  console.log(token);
+  // window.location.reload();
 
   const logoutOfApp = () => {
     localStorage.removeItem('token');
-    window.location.reload()
+    navigate('/')
   }
 
+
+  const decoded = token? jwt_decode(token) : null;
+  // console.log(decoded);
 
   return (
     <div className="header-main">
@@ -42,6 +48,7 @@ function Header() {
                 <div className="img--p">
                   <img src="../../../public/assests/avatar2.png" alt="avatar" />
                   </div>
+                  <p>{decoded?.email}</p>
                     <div className="dropdown--content">
 
                 <ul>

@@ -17,8 +17,8 @@ function Register() {
 
     // A quick check on the name field to make it mandatory
   const register = () => {
-    if (!name) {
-      return alert('Please enter a full name');
+    if (!name || !email || !password) {
+      return alert('Please enter a full details of your account');
     }
     dispatch(registerUser({username: name, email, password}))
     navigate('/login')

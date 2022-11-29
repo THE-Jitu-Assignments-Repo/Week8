@@ -40,12 +40,17 @@ export const loginUser = createAsyncThunk(
 )
 export const registerUser = createAsyncThunk(
     'user/register',
-    async (userDetails) => {
-
-        const response = await axios.post('http://localhost:5001/user/register', userDetails)
-        console.log(response);
-        toast.success(response.data)
-        return response.data
+    async (userDetails, thankAPi) => {
+        try {
+            
+            const response = await axios.post('http://localhost:5001/user/register', userDetails)
+            console.log(response);
+            toast.success(response.data)
+            return response.data
+        } catch (error) {
+            toast.error("User registration failed");
+            return thankAPi.rejectWithValue(error)
+        }
     }
 )
 
