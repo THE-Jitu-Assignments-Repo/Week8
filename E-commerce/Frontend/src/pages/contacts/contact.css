@@ -29,3 +29,72 @@
     text-transform: capitalize;
     font-family: 'Poppins', sans-serif;
 }
+
+.contact-links{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-links p{
+    color: #333333;
+    font-size: medium;
+}
+
+.contact-to{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    height: 60vh;
+    /* border: 2px solid red; */
+    gap: 20px;
+}
+
+.sales{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+        /* border: 2px solid red; */
+
+    width: 40%;
+}
+
+.sales-img{
+    width: 100%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+}
+
+.sales-img img{
+    width: 40%;
+    height: 100%;
+}
+
+.sales span{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.text{
+    max-width: 300px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 500;
+}
+.contact-icon{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+    padding: 20px;
+    gap: 20px;
+}
+
+.contact-icon li:hover{
+    color: gold;
+}
