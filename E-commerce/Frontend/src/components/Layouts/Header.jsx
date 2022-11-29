@@ -38,7 +38,10 @@ function Header() {
             {token && <Link to="/contact" className="links--tag">Contact<FaEnvelope /> </Link>}
             {token && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.cartItems?.reduce((total, item)=> total + item.quantity,0)}</p></Link>}
             {token && (
-                <div className="dropdown"><span><FaUser size={20}/>Account </span><FaCaretDown/>
+                <div className="dropdown"> 
+                <div className="img--p">
+                  <img src="../../../public/assests/avatar2.png" alt="avatar" />
+                  </div>
                     <div className="dropdown--content">
 
                 <ul>
