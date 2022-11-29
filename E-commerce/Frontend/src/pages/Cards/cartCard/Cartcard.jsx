@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch} from 'react-redux'
-import { decQuantity, incQuantity } from '../../../features/cart/cartSlice'
+import { decQuantity, incQuantity, removeSingleItem } from '../../../features/cart/cartSlice'
 // import { addQuantity, deleteItem, patchQuantity, reduceQuantity} from '../../../features/products'
 import "./CartCard.css"
 
@@ -28,7 +28,7 @@ function Cartcard({item}) {
         <div className="cart--price--details">
             <div className="cart--kash--card">Ksh. {item.price}</div>
           <div className="item--discount--cart">Discount: {item.discount_rate}%</div>
-          <span className='remove--single'>Remove</span>
+          <span className='remove--single' onClick={()=>dispatch(removeSingleItem(item.product_id))}>Remove</span>
         </div>
     </div>
   )

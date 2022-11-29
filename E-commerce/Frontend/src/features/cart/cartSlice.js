@@ -3,6 +3,7 @@ import {
     createSlice,
     createAsyncThunk
 } from "@reduxjs/toolkit";
+import { toast } from 'react-toastify';
 
 
 const initialState = {
@@ -60,6 +61,22 @@ export const decQuantity = createAsyncThunk(
 )
 
 
+export const removeSingleItem = createAsyncThunk(
+    'cart/removeSingleItem',
+    async (id, {dispatch}) =>{
+        try {
+            const response = await axios.post(`http://localhost:5001/cart/removeSingleItem/${id}`)
+            dispatch(getCart())
+            toast.success("Successfully removed")
+            return response.data
+        } catch (error) {
+            console.log(error);
+        }
+    }
+)
+
+
+
 export const cartSlice = createSlice({
     name: 'cart',
     initialState,
@@ -75,7 +92,10 @@ export const cartSlice = createSlice({
      }),
       builder.addCase(decQuantity.fulfilled,(state,action)=>{
         console.log(action.payload);
-     })
+     }),
+      builder.addCase(removeSingleItem.fulfilled,(state,action)=>{
+        console.log(action.payload);
+    })
 
 }
 })

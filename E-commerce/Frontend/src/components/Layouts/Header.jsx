@@ -12,7 +12,8 @@ function Header() {
 
   const user = useSelector(selectUser);
 
-  // const { token }= useSelector(state=> state.user)
+  const { cart }= useSelector(state=> state.cart)
+  // console.log(cart?.cartItems);
 
   const token = localStorage.getItem('token');
 
@@ -35,7 +36,7 @@ function Header() {
             {token && <Link to="/products" className="links--tag">Products<BsFillBasket3Fill /></Link>}
             {token && <Link to="/about"  className="links--tag">About<FaInfoCircle /> </Link>}
             {token && <Link to="/contact" className="links--tag">Contact<FaEnvelope /> </Link>}
-            {token && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num"></p></Link>}
+            {token && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.cartItems?.reduce((total, item)=> total + item.quantity,0)}</p></Link>}
             {token && (
                 <div className="dropdown"><span><FaUser size={20}/>Account </span><FaCaretDown/>
                     <div className="dropdown--content">

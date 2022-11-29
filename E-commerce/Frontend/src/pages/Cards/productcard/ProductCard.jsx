@@ -1,6 +1,7 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { getCart } from "../../../features/cart/cartSlice";
 import { addtocart } from "../../../features/products/productSlice";
 
 import "./productcard.css"
@@ -10,6 +11,7 @@ function ProductCard({data, product_id}) {
             
   const handleCart = (id) => {
     dispatch(addtocart(id))
+    dispatch(getCart())
   }
  
   return (
@@ -26,7 +28,7 @@ function ProductCard({data, product_id}) {
         <div className="product--card__header">
           <div className="kash--card">
             <div className="kk">
-                <div>Ksh. {Math.floor(Math.abs(data?.price*data?.discount_rate/100))}</div>
+                <div>Ksh. {data?.price - Math.floor(Math.abs(data?.price*data?.discount_rate/100))}</div>
                 <div className="from">Ksh.{data?.price}</div>
             </div>
             </div>

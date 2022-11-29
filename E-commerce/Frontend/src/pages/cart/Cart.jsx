@@ -10,7 +10,7 @@ function Cart() {
 
   console.log("caaartt",cart?.cartItems);
 
-  // const totalCart = cart?.reduce((total,item)=> total + Number(item.totalPrice),0)
+  const totalCart = cart?.cartItems?.reduce((total,item)=> total + Number(item.price),0)
 
     useEffect(() => {
     dispatch(getCart());
@@ -27,7 +27,7 @@ function Cart() {
       ))}
       <div className="total--session">
       <hr/>
-      <span>Total: Ksh. </span>
+      <span>Total: Ksh. {totalCart}</span>
 
       </div>
 
