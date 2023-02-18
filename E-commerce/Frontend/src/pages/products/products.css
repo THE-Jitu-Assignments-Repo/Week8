@@ -50,8 +50,8 @@ hr {
   display: flex;
 }
 .content--nav {
-  width:max-content;
-  position: absolute;
+  /* width:max-content; */
+  /* position: absolute; */
   /* left: 160px; */
   height: 50px;
   background-color: #f6f3f67c;

@@ -164,7 +164,10 @@
   display: flex;
   /* width: 2px; */
   width: 35px;
-  padding-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  /* padding-bottom: 10px; */
+  object-fit: scale-down;
 }
 
 .img--p img{
