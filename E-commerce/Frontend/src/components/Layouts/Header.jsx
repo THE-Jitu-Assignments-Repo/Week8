@@ -32,7 +32,7 @@ function Header() {
   return (
     <div className="header-main">
       <div className="navbar">
-        <div className="title--tag">
+        <div className="title--tag" onClick={()=> navigate('/')}>
           <h2><i className="title--tag--E">E</i><span>-Market</span></h2>
         </div>
         <div className="navlinks">

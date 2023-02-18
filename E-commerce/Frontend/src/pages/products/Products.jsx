@@ -21,8 +21,9 @@ function Products() {
   }, []);
 
   return (
+    
     <div className="product--main">
-      <div className="product--sidebar">
+      {/* <div className="product--sidebar">
         <div className="categories">
           <h3>Category</h3>
           <div className="categories--links">
@@ -82,7 +83,7 @@ function Products() {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="product--content">
         <div className="content--nav">
           <button onClick={() => setIsOpen(!isopen)}>ADD Product</button>
