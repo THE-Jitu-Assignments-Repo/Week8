@@ -1,7 +1,9 @@
 import { FaHeart, FaRegStar, FaTrophy, FaWallet } from "react-icons/fa";
 import "./home.css";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate()
   return (
     <div className="home">
       <div className="hero--banner">
@@ -13,7 +15,7 @@ function Home() {
             world.
           </span>
 
-          <button className="home--button">Start Buying Now!</button>
+          <button className="home--button" onClick={()=>navigate('/products')}>Start Buying Now!</button>
         </div>
         <div className="feature">
           <div className="feature--name">

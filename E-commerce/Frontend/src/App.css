@@ -4,3 +4,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+@media screen and (min-width: 280px) and (max-width: 820px) {
+
+
+}

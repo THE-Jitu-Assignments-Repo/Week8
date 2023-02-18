@@ -41,14 +41,14 @@
 }
 
 .home--button {
-  padding: 16px;
+  padding: 12px;
   background: gold;
   color: #000;
   border: 3px solid gold;
   width: 10em;
   border-radius: 5px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 12px;
   margin-left: 50px;
   transform: scale(.9);
 }
