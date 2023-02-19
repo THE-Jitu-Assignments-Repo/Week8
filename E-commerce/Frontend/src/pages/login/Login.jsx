@@ -48,9 +48,9 @@ function Login() {
         </form>
 
         <p>
-          Not a member?{' '}
+          You don't have an account?{' '}
           <Link to={'register'} ><span className='login__register'>
-            Register Now
+            Register
           </span> </Link>
           
         </p>
