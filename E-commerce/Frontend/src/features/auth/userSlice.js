@@ -76,8 +76,8 @@ export const userSlice = createSlice({
 
             }),
             builder.addCase(loginUser.rejected, (state, action) => {
-                // state.error = action.error.response.data.message
-                state.error = true
+                state.error = action.error.response.data.message
+                // state.error = true
             })
 
     }

@@ -10,3 +10,11 @@ export const validateProductSchema = (product) => {
   })
   return schema.validate(product);
 } 
+
+export const validateLoginc= (details)=>{
+  const Schema = yup.object().shape({
+    email: yup.string().required(),
+    password: yup.string().required()
+  })
+  return schema.validate(details)
+}

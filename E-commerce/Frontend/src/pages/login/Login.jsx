@@ -4,18 +4,24 @@ import { Link, useNavigate } from 'react-router-dom';
 import { loginUser } from '../../features/auth/userSlice';
 import './login.css'
 import { FaRegStar, FaRegUserCircle, FaUserEdit } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 function Login() {
+  const {error} = useSelector(state=>state.user) 
 
   const navigate = useNavigate();
 // use state constants for the the form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [err, setErr] = useState('')
 
   const dispatch = useDispatch();
 
 
-  const loginToApp = () => {      
+  const loginToApp = () => {   
+    if(error){
+      setErr(error)
+    }   
       dispatch(loginUser({email,password}))
       navigate('/products')     
 
@@ -27,6 +33,7 @@ function Login() {
       <div className='login--form--container' >
         <FaRegUserCircle size={40} style={{display: 'flex', width: '100%', marginBottom: '10px'}}/>
           <h2>Login to E-market</h2>
+          {err && <div>{err}</div>}
         <form className='login--form'>
           <label htmlFor="email">Email</label>
           <input
