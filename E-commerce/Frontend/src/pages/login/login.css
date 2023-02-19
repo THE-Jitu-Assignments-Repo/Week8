@@ -39,7 +39,7 @@
   margin: 20px auto;
   max-width: 30%;
   max-height: fit-content;
-  box-shadow: 3px 4px 3px 3px #343a40;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
 .login--form--container{
@@ -59,6 +59,9 @@
 .login--form input{
     height: 2.5em;
     padding: 5px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #156192;
 }
 .login--form label{
   font-size: 14px;
@@ -73,7 +76,7 @@
 }
 .login__register:hover{
     cursor: pointer;
-    color: blue;
+    color: #156192;
     text-decoration: underline;
 }
 
@@ -84,7 +87,7 @@
     color: #fff;
     border: none;
     padding: 5px;
-    border-radius: 3px;
+    border-radius: 5px;
     /* align-self: center; */
 }
 .sign--in{
@@ -92,4 +95,8 @@
 }
 .login--form button:hover{
     background-color: #1256838e;
+}
+.login--form--container p{
+  /* border: 2px solid red; */
+  padding: 14px;
 }
