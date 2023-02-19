@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaRegistered, FaRegUserCircle } from 'react-icons/fa';
+import { FaRegistered, FaRegUserCircle, FaUserEdit } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../features/auth/userSlice';
@@ -28,7 +28,7 @@ function Register() {
   return (
   <div className='login'>
       <div className='login--form--container' >
-        <FaRegUserCircle size={40} style={{width: '100%'}}/>
+        <FaUserEdit size={40} style={{width: '100%'}}/>
           <h2>Register to E-market</h2>
         <form className='login--form'>
           <label htmlFor="name">username</label>
