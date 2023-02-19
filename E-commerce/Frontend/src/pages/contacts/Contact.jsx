@@ -26,7 +26,7 @@ function Contact() {
                 </div>
                 <span>Talk to Sales</span>
                 <div className="text">
-                  <p>interested with advertising or saling your products with E-market? Just pick up the phone and call this Number..</p>
+                  <p>interested with advertising or selling your products with E-market? Just pick up the phone and call this Number..</p>
                   <p>+254 797934037</p>
                 </div>
               </div>
