@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { FaRegistered, FaRegUserCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { registerUser } from '../../features/auth/userSlice';
 
 import "../login/login.css"
@@ -27,37 +28,48 @@ function Register() {
   return (
   <div className='login'>
       <div className='login--form--container' >
+        <FaRegUserCircle size={40} style={{width: '100%'}}/>
           <h2>Register to E-market</h2>
         <form className='login--form'>
+          <label htmlFor="name">username</label>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder='Full name (required for registering)'
             type='text'
           />
-
+          <label htmlFor="Profile">Profile *URL</label>
           <input
             value={profilePic}
             onChange={(e) => setProfilePic(e.target.value)}
             placeholder='Profile picture URL (optional)'
             type='text'
           />
+          <label htmlFor="email">Email</label>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
+            placeholder='...@gmail.com'
             type='email'
           />
+          <label htmlFor="password">Password</label>
           <input 
             value={password} 
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
+            placeholder='Enter password'
             type='password'
           />
           <button type='submit' className='sign--in' onClick={register}>
-            Register Now
+            Register
           </button>
         </form>
+          <p>
+          You have an account?{' '}
+          <Link to='/login' ><span className='login__register'>
+            Login
+          </span> </Link>
+          
+        </p>
       </div>
     </div>
   )

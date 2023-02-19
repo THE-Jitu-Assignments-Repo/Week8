@@ -36,9 +36,9 @@
 .login {
   /* border: 2px solid red; */
   border-radius: 5px;
-  margin: 50px auto;
+  margin: 20px auto;
   max-width: 30%;
-  max-height: 70vh;
+  max-height: fit-content;
   box-shadow: 3px 4px 3px 3px #343a40;
 }
 
@@ -60,14 +60,16 @@
     height: 2.5em;
     padding: 5px;
 }
-
+.login--form label{
+  font-size: 14px;
+}
 
 .login--form--container h2, p{
     text-align: center;
     padding: 5px;
 }
 .login__register{
-    padding: 5px;
+    padding: 2px;
 }
 .login__register:hover{
     cursor: pointer;
