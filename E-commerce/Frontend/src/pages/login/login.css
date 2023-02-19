@@ -53,7 +53,7 @@
   row-gap: 10px;
   /* justify-content: center; */
   /* border: 2px solid red; */
-  /* margin: 50px auto; */
+  margin: 0 auto;
   padding: 20px;
 }
 .login--form input{
@@ -79,13 +79,13 @@
 
 
 .login--form button{
-    max-width: 50%;
+    /* max-width: 50%; */
     background-color: #156192;
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 5px;
     border-radius: 3px;
-    align-self: center;
+    /* align-self: center; */
 }
 .sign--in{
     font: 1em sans-serif;
